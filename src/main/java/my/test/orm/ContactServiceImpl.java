@@ -20,19 +20,31 @@ public class ContactServiceImpl implements ContactService {
     }
 
     public ContactEntity save(ContactEntity contact) {
-        return contactRepository.save(contact);
-    }
-
-    public void delete(Integer id) {
-        contactRepository.deleteById(id);
-    }
-
-    public ContactEntity editContact(ContactEntity contact) {
         return contactRepository.saveAndFlush(contact);
     }
 
+    @Override
+    public ContactEntity delete(Integer id) {
+        ContactEntity contactEntity = contactRepository.findById(id).get();
+        contactRepository.delete(contactEntity);
+        return contactEntity;
+    }
 
-    public ContactEntity findOne(Integer id) {
+    @Override
+
+//    public ContactEntity update(ContactEntity contactEntity){
+//        ContactEntity updatedContact = contactRepository.findOne(contactEntity.getId());
+//        updatedContact.setFirstName(contactEntity.getFirstName());
+//        updatedContact.setLastName(contactEntity.getLastName());
+//        return updatedContact;
+//    }
+
+//    public void delete(Integer id) {
+//        contactRepository.deleteById(id);
+//    }
+
+    public ContactEntity findById(int id) {
+
         return contactRepository.findById(id).get();
     }
 }

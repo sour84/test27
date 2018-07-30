@@ -16,11 +16,6 @@
 
 </head>
 <body>
-<div class="container"><br/>
-    <div class="alert alert-success">
-        <strong>Success!</strong> It is working as we expected.
-    </div>
-</div>
 
 <div class="container">
 

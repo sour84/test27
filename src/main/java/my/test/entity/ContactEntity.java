@@ -1,16 +1,18 @@
 package my.test.entity;
 
+import org.springframework.data.domain.Persistable;
+import org.springframework.lang.Nullable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.*;
 import java.util.Date;
 
 
-
 @Entity
 @Table(name = "contact", schema = "javastudy", catalog = "javastudy")
 
-public class ContactEntity {
+public class ContactEntity implements Persistable<Integer> {
     private Date birthDate;
     private String firstName;
     private Integer id;
@@ -38,11 +40,13 @@ public class ContactEntity {
     }
 
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
     }
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -52,6 +56,12 @@ public class ContactEntity {
     @Column(name = "last_name", nullable = true, length = 40)
     public String getLastName() {
         return lastName;
+    }
+
+    @Transient
+    @Override
+    public boolean isNew() {
+        return id == null;
     }
 
     public void setLastName(String lastName) {

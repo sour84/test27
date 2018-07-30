@@ -4,8 +4,13 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@attribute name="title" fragment="true" %>
-<html xmlns:p="http://primefaces.org/ui">
+
 <head>
+    <script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet"
+          href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
     <title><jsp:invoke fragment="title"/></title>
 
     <!-- Bootstrap Core CSS -->
@@ -89,17 +94,6 @@
 
 <jsp:doBody/>
 
-
-<div class="container">
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright © Javastudy.ru 2016</p>
-            </div>
-        </div>
-    </footer>
-</div>
 
 </body>
 

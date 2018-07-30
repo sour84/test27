@@ -14,23 +14,25 @@
 		<a href="${queryFindAllUsersJPA}" class="list-group-item">Find All Users</a>
 				<a href="${newContact}" class="list-group-item">New Users</a>
 			<c:if test="${!empty resultObject}">
-				<table class="tg">
-					<tr>
-						<th width="80">Person ID</th>
-						<th width="120">Person Name</th>
-						<th width="120">Person Country</th>
-						<th width="60">Edit</th>
-						<th width="60">Delete</th>
-					</tr>
+				<table class="table table-striped">
+					<thead>
+						<th scope="row">Person ID</th>
+						<th scope="row">firstName</th>
+						<th scope="row">lastName</th>
+						<th scope="row">Edit</th>
+						<th scope="row">Delete</th>
+					</thead>
+					<tbody>
 					<c:forEach items="${resultObject}" var="person">
 						<tr>
 							<td>${person.id}</td>
 							<td>${person.firstName}</td>
 							<td>${person.lastName}</td>
-							<td><a href="<c:url value='/edit/${person.id}' />" >Edit</a></td>
+							<td><a href="<c:url value='/edit?id=${person.id}' />" >Edit</a></td>
 							<td><a href="<c:url value='deleteContact?id=${person.id}' />" >Delete</a></td>
 						</tr>
 					</c:forEach>
+					</tbody>
 				</table>
 			</c:if>
 

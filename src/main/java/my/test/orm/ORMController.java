@@ -29,9 +29,8 @@ public class ORMController {
 
     @RequestMapping(value = "/queryFindAllUsersJPA", method = RequestMethod.GET)
     public ModelAndView queryFindAllUsersJPA() {
-        System.out.println("ORMController ormFindAllUsers is called");
         List<ContactEntity> contact = contactService.findAll();
-        return new ModelAndView("/orm/contact_list", "resultObject", contact);
+        return new ModelAndView("/orm/person", "resultObject", contact);
 
     }
     @RequestMapping(value = "/newContact", method = RequestMethod.GET)
@@ -43,25 +42,26 @@ public class ORMController {
     }
 
     @RequestMapping(value = "/saveContact", method = RequestMethod.POST)
-    public ModelAndView saveContact(@ModelAttribute ContactEntity contactEntity) {
-         contactService.save(contactEntity);
-         return queryFindAllUsersJPA();
+    public ModelAndView saveEmployee(@ModelAttribute ContactEntity contactEntity) {
+     contactService.save(contactEntity);
+     return queryFindAllUsersJPA();
     }
     @RequestMapping(value = "/deleteContact", method = RequestMethod.GET)
     public ModelAndView deleteContact(HttpServletRequest request) {
         int contactId = Integer.parseInt(request.getParameter("id"));
         contactService.delete(contactId);
         return queryFindAllUsersJPA();
-        //return new ModelAndView("redirect:/orm/person");
     }
 
-   @RequestMapping(value = "/editEmployee", method = RequestMethod.GET)
+   @RequestMapping(value = "/edit", method = RequestMethod.GET)
    public ModelAndView editArticle(HttpServletRequest request) {
        int contactId = Integer.parseInt(request.getParameter("id"));
        ModelAndView model = new ModelAndView();
-       ContactEntity contactEntity = contactService.findOne(contactId);
+       ContactEntity contactEntity = contactService.findById(contactId);
        model.addObject("contactEntity", contactEntity);
-       model.setViewName("/orm/personAdd");
+       model.setViewName("/orm/new-employee");
        return model;
    }
+
+
 }

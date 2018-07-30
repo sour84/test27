@@ -1,41 +1,29 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="page" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
-    <head>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <script src="../js/bootstrap.min.js"></script>
-    </head>
-    <body>
+
+
+<page:template>
+    <jsp:body>
         <div class="container">
             <form:form action="saveContact" method="post" modelAttribute="contactEntity">
-
-
-
-                <input type="hidden" id="idEmployee" name="idEmployee" value="${contactEntity.id}">
+                <input id="idEmployee" name="idEmployee" value="${contactEntity.id}">
                 <h2>Employee</h2>
                 <div class="form-group col-xs-4">
-                    <label for="name" class="control-label col-xs-4">Name:</label>
-                    <input type="text" name="name" id="name" class="form-control" value="${contactEntity.firstName}" required="true" />
+                    <label for="firstName" class="control-label col-xs-4">Name:</label>
+                    <input type="text" name="firstName" id="firstName" class="form-control" value="${contactEntity.firstName}" required="true" />
 
                     <label for="lastName" class="control-label col-xs-4">Last name:</label>                   
                     <input type="text" name="lastName" id="lastName" class="form-control" value="${contactEntity.lastName}" required="true"/>
-
-                    <%--<label for="birthdate" class="control-label col-xs-4">Birth date</label>                 --%>
-                    <%--<input type="text"  pattern="^\d{2}-\d{2}-\d{4}$" name="birthDate" id="birthdate" class="form-control" value="${employee.birthDate}" maxlength="10" placeholder="dd-MM-yyy" required="true"/>--%>
-
-                    <%--<label for="role" class="control-label col-xs-4">Role:</label>                    --%>
-                    <%--<input type="text" name="role" id="role" class="form-control" value="${employee.role}" required="true"/> --%>
-
-                    <%--<label for="department" class="control-label col-xs-4">Department:</label>--%>
-                    <%--<input type="text" name="department" id="department" class="form-control" value="${employee.department}" required="true"/>--%>
-
-                    <%--<label for="department" class="control-label col-xs-4">E-mail:</label>                   --%>
-                    <%--<input type="text" name="email" id="email" class="form-control" value="${employee.email}" placeholder="smith@aol.com" required="true"/>--%>
-
                     <br></br>
                     <button type="submit" class="btn btn-primary  btn-md">Accept</button> 
                 </div>
+
             </form:form>
+
+
         </div>
-    </body>
-</html>
+    </jsp:body>
+</page:template>

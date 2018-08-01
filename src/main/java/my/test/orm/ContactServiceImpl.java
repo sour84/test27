@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import org.springframework.data.domain.Sort;
 
 
 @Repository
@@ -15,8 +16,14 @@ public class ContactServiceImpl implements ContactService {
     @Autowired
     ContactRepository contactRepository;
 
+
+    @Override
+    public List<ContactEntity> findByLastName(String lastName) {
+        return contactRepository.findByLastName(lastName);
+    }
+
     public List<ContactEntity> findAll() {
-        return contactRepository.findAll();
+        return contactRepository.findAll(sortByIdAsc());
     }
 
     public ContactEntity save(ContactEntity contact) {
@@ -31,21 +38,15 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-
-//    public ContactEntity update(ContactEntity contactEntity){
-//        ContactEntity updatedContact = contactRepository.findOne(contactEntity.getId());
-//        updatedContact.setFirstName(contactEntity.getFirstName());
-//        updatedContact.setLastName(contactEntity.getLastName());
-//        return updatedContact;
-//    }
-
-//    public void delete(Integer id) {
-//        contactRepository.deleteById(id);
-//    }
-
     public ContactEntity findById(int id) {
 
         return contactRepository.findById(id).get();
+    }
+
+
+
+    private Sort sortByIdAsc() {
+        return new Sort(Sort.Direction.ASC, "firstName");
     }
 }
 

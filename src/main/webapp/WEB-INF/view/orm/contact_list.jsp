@@ -63,6 +63,7 @@
         </tbody>
     </table>
     <spring:url value="/queryFindAllUsersJPA" var="queryFindAllUsersJPA" />
+
     <a class="btn btn-primary" href="${newContact}" role="button" >Add New Article</a>
 </div>
 </body>

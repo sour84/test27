@@ -9,13 +9,30 @@
 	<jsp:body>
 <c:url value="/queryFindAllUsersJPA" var="queryFindAllUsersJPA" />
 <c:url value="/newContact" var="newContact" />
+		<script>
+            $(document).ready(function() {
+                $('.js-example-basic-multiple').select2();
+            });
+		</script>
+        <div class="container">
+            <div class="form-group col-xs-4">
 			<br>
 			<h3>Persons List</h3>
-		<a href="${queryFindAllUsersJPA}" class="list-group-item">Find All Users</a>
+        <form action="result"  method="post">
+            <input name="lastName" value=""/>
+            <button type="submit" class="btn btn-primary"  value="send">Primary</button>
+            <%--<input type="submit" value="send"/>--%>
+        </form>
+
+
+        <p>Parameter from home ${userId}</p>
+        <a href="${queryFindAllUsersJPA}" class="list-group-item">Find All Users</a>
+
 				<a href="${newContact}" class="list-group-item">New Users</a>
+
 			<c:if test="${!empty resultObject}">
-				<table class="table table-striped">
-					<thead>
+				<table class="table table-striped table-bordered table-hover">
+					<thead class="thead-dark">
 						<th scope="row">Person ID</th>
 						<th scope="row">firstName</th>
 						<th scope="row">lastName</th>
@@ -23,7 +40,7 @@
 						<th scope="row">Delete</th>
 					</thead>
 					<tbody>
-					<c:forEach items="${resultObject}" var="person">
+					<c:forEach  items="${resultObject}" var="person">
 						<tr>
 							<td>${person.id}</td>
 							<td>${person.firstName}</td>
@@ -37,7 +54,20 @@
 			</c:if>
 
 		</div>
-		<!-- /.container -->
+			<form action="result" method="post">
+				<label for="id_label_multiple">
+
+					<select class="js-example-basic-multiple js-states form-control" multiple="multiple" id="id_label_multiple">
+						<c:forEach  items="${resultObject}" var="person">
+						<option value="${person.lastName}">${person.lastName}</option>
+									</c:forEach>
+					</select>
+
+				<button type="submit" class="btn btn-primary "  value="send">Primary</button>
+				</label>
+			</form>
+        </div>
+        <!-- /.container -->
 
 	</jsp:body>
 </page:template>

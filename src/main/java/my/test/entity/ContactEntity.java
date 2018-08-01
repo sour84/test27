@@ -1,10 +1,6 @@
 package my.test.entity;
 
 import org.springframework.data.domain.Persistable;
-import org.springframework.lang.Nullable;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -40,7 +36,6 @@ public class ContactEntity implements Persistable<Integer> {
     }
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public Integer getId() {

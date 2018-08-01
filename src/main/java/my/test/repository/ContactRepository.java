@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ContactRepository extends JpaRepository<ContactEntity, Integer> {
 
+    List<ContactEntity> findByLastName(String lastName);
+
 }

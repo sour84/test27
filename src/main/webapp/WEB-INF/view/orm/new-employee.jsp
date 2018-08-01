@@ -8,8 +8,8 @@
 <page:template>
     <jsp:body>
         <div class="container">
-            <form:form action="saveContact" method="post" modelAttribute="contactEntity">
-                <input id="idEmployee" name="idEmployee" value="${contactEntity.id}">
+            <form:form action="saveContact" method="POST" modelAttribute="contactEntity">
+                <input  type="hidden" id="idEmployee" name="idEmployee" value="${contactEntity.id}">
                 <h2>Employee</h2>
                 <div class="form-group col-xs-4">
                     <label for="firstName" class="control-label col-xs-4">Name:</label>
